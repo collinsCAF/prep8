@@ -1,0 +1,134 @@
+<div id="addAdminModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1>Add New Admin</h1>
+    <form id="addAdminForm">
+      <div class="form-group">
+        <label for="adminName">Admin Name</label>
+        <input type="text" id="adminName" name="adminName" placeholder="Enter admin's name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="adminEmail">Admin Email</label>
+        <input type="email" id="adminEmail" name="adminEmail" placeholder="Enter admin's email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="adminPassword">Password</label>
+        <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="adminRole">Admin Role</label>
+        <select id="adminRole" name="adminRole" required>
+          <option value="" disabled selected>Select admin role</option>
+          <option value="super-admin">Super Admin</option>
+          <option value="editor-admin">Editor Admin</option>
+          <option value="administrator">Administrator</option>
+          <option value="accountant">Accountant</option>
+          <option value="tutor">Tutor</option>
+          <option value="secretary">Secretary</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Add Admin</button>
+    </form>
+    <div class="loader" id="addAdminLoader"></div>
+    <div class="success-message" id="addAdminSuccessMessage"></div>
+  </div>
+</div>
+
+<style>
+  .modal-content {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal-content h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .close:hover {
+    color: #333;
+  }
+</style>

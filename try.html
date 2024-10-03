@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Portal - PrepMaster</title>
   <link rel="stylesheet" href="admin.css">
-</head>
-<style>
+  <style>
 
 /* Global Styles */
 * {
@@ -205,7 +204,108 @@ table th {
   }
 }
 
-</style>
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"], 
+textarea, 
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.submit-btn {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.success-message {
+  display: none;
+  color: green;
+  margin-top: 10px;
+}
+
+/* Loader Styles */
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid orange;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success Message Styles */
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  display: none;
+}
+
+  </style>
+  <script src="uploadModal.js" defer></script>
+  <script src="addAdminModal.js" defer></script>
+</head>
 <body>
     <header class="admin-header">
         <div class="logo">
@@ -214,11 +314,9 @@ table th {
         <nav class="admin-nav">
           <ul>
             <li><a href="#dashboard">Dashboard</a></li>
-          <!--  <li><a href="#manage-users">Manage Users</a></li>-->
-            <li><a href="addadmin.html">Add ADMIN </a></li>
-            <li><a href="upload.html">Upload</a></li>
-            <li><a href="referralform.html ">referral code </a></li>
-        
+            <li><a href="#" id="addAdminLink">Add ADMIN</a></li>
+            <li><a href="#" id="uploadLink">Upload</a></li>
+            <li><a href="referralform.html">referral code</a></li>
             <li><a href="logout">Logout</a></li>
           </ul>
         </nav>
@@ -349,5 +447,26 @@ table th {
       </main>
     
   
+  <!-- Include the modals -->
+  <div id="modalContainer"></div>
+  <div id="addAdminModalContainer"></div>
+
+  <script>
+    // Load the upload modal content
+    fetch('uploadModal.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('modalContainer').innerHTML = data;
+        initializeModal();
+      });
+
+    // Load the add admin modal content
+    fetch('addAdminModal.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('addAdminModalContainer').innerHTML = data;
+        initializeAddAdminModal();
+      });
+  </script>
 </body>
 </html>

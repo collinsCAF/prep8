@@ -1,119 +1,222 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('https://t4.ftcdn.net/jpg/02/14/31/63/360_F_214316329_vX8WM2z1DLYfzcyRxqOenc9SJV7gXOyJ.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      width: 90%;
+      max-width: 400px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #3498db;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="email"], input[type="password"], input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #777;
+      transition: color 0.3s ease;
+    }
+
+    .toggle-password:hover {
+      color: #3498db;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .error {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    /* Loader styles */
+    .loader {
+      display: none;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
-<style>
-  /* Global Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f6f9;
-}
-
-.login-container {
-  width: 80%;
-  max-width: 400px;
-  margin: 100px auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #3498db;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-input[type="text"], input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 18px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-}
-
-button:hover {
-  background-color: #2980b9;
-}
-
-</style>
 <body>
-
   <div class="login-container">
-    <h1>Login</h1>
+    <h1>Admin Login</h1>
     <form id="loginForm">
       <div class="form-group">
-        <label for="email">email</label>
-        <input type="text" id="email" placeholder="Enter your email" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" class="error"></span>
       </div>
-
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" required>
+        <label for="password">Password:</label>
+        <div class="password-container">
+          <input type="password" id="password" name="password" required>
+          <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+        </div>
+        <span id="passwordError" class="error"></span>
       </div>
-
-      <button type="button" onclick="login()">Login</button>
+      <button type="submit" id="loginButton">Login</button>
+      <div class="loader" id="loader"></div>
     </form>
-    <p id="error-message" style="color:red;"></p>
+    <p id="error-message" class="error" style="margin-top: 10px;"></p>
   </div>
 
-  
-    
-   
-
   <script>
+    const form = document.getElementById('loginForm');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const errorMessage = document.getElementById('error-message');
+    const togglePassword = document.getElementById('togglePassword');
+    const loginButton = document.getElementById('loginButton');
+    const loader = document.getElementById('loader');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (validateForm()) {
+        login();
+      }
+    });
+
+    function validateForm() {
+      let isValid = true;
+      emailError.textContent = '';
+      passwordError.textContent = '';
+
+      if (!email.value) {
+        emailError.textContent = 'Email is required';
+        isValid = false;
+      } else if (!isValidEmail(email.value)) {
+        emailError.textContent = 'Please enter a valid email address';
+        isValid = false;
+      }
+
+      if (!password.value) {
+        passwordError.textContent = 'Password is required';
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    function isValidEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    togglePassword.addEventListener('click', function() {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+
     function login() {
-      // Get form input values
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const errorMessage = document.getElementById('error-message');
-  
-      // Clear any previous error message
-      errorMessage.textContent = '';
-  
-      // Create a payload object with the email and password
       const payload = {
-        email: email,
-        password: password
+        email: email.value,
+        password: password.value
       };
-  
-      // Send the login request to the backend
-      console.log (payload)
-      fetch('https://backend-r7hk.onrender.com/api/auth/staff-login', {  // Replace with your backend endpoint
+
+      // Show loader and disable button
+      loader.style.display = 'block';
+      loginButton.disabled = true;
+      loginButton.textContent = 'Logging in...';
+
+      console.log(payload);
+      fetch('https://backend-r7hk.onrender.com/api/auth/staff-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -122,28 +225,31 @@ button:hover {
       })
       .then(response => response.json())
       .then(data => {
-        console.log (data)
-        if (data) {
-          // Store the access token in localStorage
+        console.log(data);
+        // Hide loader and enable button
+        loader.style.display = 'none';
+        loginButton.disabled = false;
+        loginButton.textContent = 'Login';
+
+        if (data.token) {
+          // Clear existing access token before setting the new one
+          localStorage.removeItem('accessToken');
+          // Set the new access token
           localStorage.setItem('accessToken', data.token);
-  
-          // Redirect to the dashboard page if login is successful
-          window.location.href = 'try.html'; // or the desired page
+          window.location.href = 'try.html';
         } else {
-          // Show error message if login fails
           errorMessage.textContent = 'Invalid email or password!';
         }
       })
       .catch(error => {
         console.error('Error:', error);
+        // Hide loader and enable button
+        loader.style.display = 'none';
+        loginButton.disabled = false;
+        loginButton.textContent = 'Login';
         errorMessage.textContent = 'An error occurred. Please try again later.';
       });
     }
   </script>
-  
-
-
 </body>
-</html> 
-
-
+</html>
