@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  /* FAQ Section Styling */
+.faq-container {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    margin: 40px 0;
+}
+
+.faq-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h4 {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.faq-item p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+    padding-left: 10px;
+    display: none; /* Hidden by default */
+}
+
+.faq-item.active p {
+    display: block; /* Show when active */
+}
+  
+</style>
+<body>
+    <section id="faq-section" class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+    
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">What is Prep Master?</h4>
+            <p class="faq-answer">Prep Master is an online platform designed to assess academic attitudes and promote student excellence.</p>
+        </div>
+    
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">How does the attitude test work?</h4>
+            <p class="faq-answer">The attitude test is a scientifically backed tool that evaluates key academic attitudes and provides personalized feedback.</p>
+        </div>
+    
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">Can I retake the attitude test?</h4>
+            <p class="faq-answer">Yes, students can retake the test to track improvements and identify changes in their academic mindset.</p>
+        </div>
+    
+    </section>
+    
+</body>
+<script>
+    function toggleFAQ(element) {
+    const answer = element.nextElementSibling;
+
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+    } else {
+        answer.style.display = "block";
+    }
+}
+
+</script>
+</html>

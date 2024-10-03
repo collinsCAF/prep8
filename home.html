@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Menu Bar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+   /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://st3.depositphotos.com/13324256/19088/i/450/depositphotos_190885170-stock-photo-stack-books-diploma-graduation-hat.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color:orange;
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f39c12;
+}
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('background.jpg'); /* Add your image URL here */
+    background-size: cover; /* Ensures the image covers the whole container */
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-overlay {
+    position: absolute;
+    color: white;
+    text-align: center;
+      padding: 20px;
+    border-radius: 10px;
+}
+
+.text-overlay h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.text-overlay p {
+    font-size: 24px;
+    margin: 0;
+}
+/* Responsive Design */
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+.hero {
+    background: url('https://example.com/hero-bg.jpg') no-repeat center center/cover;
+    color: white;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #e55a00;
+}
+
+/* Academic programs section */
+.programs {
+    padding: 50px 0;
+    background: #f9f9f9;
+}
+
+.programs h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.program-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.program-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.program-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.program-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Footer section */
+footer {
+    background: #004a99;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .program-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .program-item {
+        width: 90%;
+    }
+
+    .hero-content h2 {
+        font-size: 0.1rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+    }
+
+    .navbar .nav-links li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 100vh;
+        top: 0px;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .navbar.active .nav-links {
+        transform: translateX(0%);
+    }
+
+    .burger.toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.toggle .line2 {
+        opacity: 0;
+    }
+
+    .burger.toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+ 
+</style>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo">MyWebsite</div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <br><br> <br><br>
+    <div class="background-container">
+        <div class="text-overlay">
+            <h1>Welcome to Prep Master</h1>
+            <p><strong style="color: #f39c12;"> MISSION </strong> <br>Master’s mission is to deliver a dynamic and interactive platform for assessing academic attitudes, fostering self-awareness, and promoting growth in students. Through our scientifically-backed attitude test, we aim to empower learners and educational institutions to identify strengths, address areas of improvement, and cultivate a mindset geared toward academic excellence, personal development, and lifelong learning.
+
+            </p><br><br>
+            <p><strong style="color: #f39c12;">VISION </strong><br> Our vision at Prep Master is to become the leading online resource for academic attitude assessment, driving a transformative shift in how students and educators approach learning. By shaping a more insightful, reflective, and growth-oriented academic culture, we aspire to enhance the quality of education and nurture confident, resilient individuals equipped for future challenges.</p>
+        </div>
+    </div>
+
+   
+
+    <!-- Academic Programs Section -->
+    <section class="programs">
+        <div class="container">
+            <h3>Our Academic Programs</h3>
+            <div class="program-list">
+                <div class="program-item">
+                    <h4>Undergraduate Programs</h4>
+                    <p>Explore a range of undergraduate programs that set you on the path to success.</p>
+                </div>
+                <div class="program-item">
+                    <h4>Postgraduate Programs</h4>
+                    <p>Advance your knowledge with our industry-focused postgraduate courses.</p>
+                </div>
+                <div class="program-item">
+                    <h4>Research Opportunities</h4>
+                    <p>Engage in groundbreaking research with our faculty and resources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Academic Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+   
+    
+
+</body>
+<script>
+    const burger = document.querySelector('.burger');
+    const navbar = document.querySelector('.navbar');
+    
+    burger.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+        burger.classList.toggle('toggle');
+    });
+</script>
+
+</html>

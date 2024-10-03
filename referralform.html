@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referral Link Generator</title>
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .referral-container {
+      width: 90%;
+      max-width: 500px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: orange;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: darkorange;
+    }
+
+    .output {
+      margin-top: 15px;
+      color: #2ecc71;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .referral-container {
+        width: 100%;
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="referral-container">
+    <h1>Generate Referral Link</h1>
+    <form id="referralForm">
+      <!-- Input for the user's email -->
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+      <button type="button" onclick="generateReferralLink()">Generate Referral Link</button>
+    </form>
+    <p class="output" id="generated-link"></p>
+  </div>
+
+  <script>
+    function generateReferralLink() {
+      // Get the email input value
+      const email = document.getElementById('email').value;
+
+      // Ensure the email is provided
+      if (!email) {
+        alert("Please enter your email.");
+        return;
+      }
+
+      // Retrieve the access token from localStorage
+      const token = localStorage.getItem('accessToken');
+
+      // Ensure the access token exists
+      if (!token) {
+        alert("Access token not found. Please log in again.");
+        return;
+      }
+
+      // Prepare the payload with email to generate referral link
+      const payload = { email: email };
+
+      // Send a request to the backend to get the referral link based on the email
+      fetch('https://backend-r7hk.onrender.com/api/get-referral', {  // Replace with your backend endpoint
+        method: 'POST',  // Change to POST if your backend needs a POST request
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.referralLink) {
+          console.log('Referral Link:', data.referralLink);
+          // Display the referral link on the page
+          document.getElementById('generated-link').textContent = `Referral Link: ${data.referralLink}`;
+        } else {
+          alert('Failed to generate referral link.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .logout-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .logout-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .logout-btn:hover {
+            background-color: #ff1a1a;
+        }
+        .message {
+            display: none;
+            color: green;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+        <p id="successMessage" class="message">Logout successful! thanks PrepMaster...</p>
+    </div>
+
+    <script>
+        function logout() {
+            // Clear only the access token from local storage
+            localStorage.removeItem('accessToken');
+
+            // Show the success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+
+            // Redirect to login page after 2 seconds
+            setTimeout(function() {
+                window.location.href = 'adminlogin.html';  // Change this to your login or home page URL
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  /* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
+}
+
+.login-container {
+  width: 80%;
+  max-width: 400px;
+  margin: 100px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #3498db;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+</style>
+<body>
+
+  <div class="login-container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" id="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+
+      <button type="button" onclick="login()">Login</button>
+    </form>
+    <p id="error-message" style="color:red;"></p>
+  </div>
+
+  <script>
+    // app.js
+
+function login() {
+  // Hardcoded admin credentials
+  const correctemail = 'vitetemile@gmail.com';
+  const correctPassword = 'password';
+
+  // Get form input values
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const errorMessage = document.getElementById('error-message');
+
+  // Clear any previous error message
+  errorMessage.textContent = '';
+
+  // Validate input credentials
+  
+  if (email=== correctemail && password === correctPassword) {
+    // Redirect to the dashboard page if login is successful
+    window.location.href = 'addadmin.html';
+   
+  } 
+  
+  else {
+    // Show error message if login fails
+    errorMessage.textContent = 'Invalid email or password!';
+  }
+}
+
+  </script>
+
+</body>
+</html>

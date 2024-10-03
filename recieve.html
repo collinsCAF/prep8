@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .question {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 5px 0;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Questions List</h1>
+    <div id="user-list"></div>
+    <button class="submit-btn" id="submitAnswers">Submit Answers</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        // Function to fetch questions from the backend
+        async function fetchQuestions() {
+            try {
+                const response = await fetch('https://backend-r7hk.onrender.com/api/questions/English GNS');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                displayQuestions(data.questions); // Assuming 'questions' is the key in the response
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        }
+
+        // Function to display questions in the HTML
+        function displayQuestions(questions) {
+            const questionList = document.getElementById('user-list');
+            questionList.innerHTML = ''; // Clear any existing content
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `<strong>Question:</strong> ${question.questionText}`;
+                
+                // Add the options
+                const optionsList = document.createElement('ul');
+                optionsList.className = 'options';
+                question.options.forEach(option => {
+                    const optionItem = document.createElement('li');
+                    optionItem.innerHTML = `
+                        <label>
+                            <input type="radio" name="question-${question._id}" value="${option.optionLabel}">
+                            ${option.optionLabel}: ${option.option}
+                        </label>
+                    `;
+                    optionsList.appendChild(optionItem);
+                });
+
+                // Store correct answer and description in data attributes
+                questionDiv.dataset.correctAnswer = question.correctAnswer; // Add correct answer
+                questionDiv.dataset.answerDescription = question.answerDescription; // Add answer description
+
+                questionDiv.appendChild(optionsList);
+                questionList.appendChild(questionDiv);
+            });
+        }
+
+        // Function to handle answer submission
+        function handleSubmit() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = ''; // Clear previous results
+            const questions = document.querySelectorAll('.question');
+            let correctCount = 0;
+
+            questions.forEach(question => {
+                const questionId = question.querySelector('input[type="radio"]').name.split('-')[1];
+                const selectedOption = question.querySelector(`input[name="question-${questionId}"]:checked`);
+                const correctAnswer = question.dataset.correctAnswer; // Access correct answer from dataset
+                const answerDescription = question.dataset.answerDescription; // Access answer description from dataset
+
+                if (selectedOption) {
+                    const selectedValue = selectedOption.value;
+                    if (selectedValue === correctAnswer) {
+                        correctCount++;
+                    } else {
+                        resultDiv.innerHTML += `<p style="color: red;">Incorrect for "${question.querySelector('strong').textContent}". Correct answer: ${correctAnswer}. Description: ${answerDescription}</p>`;
+                    }
+                } else {
+                    resultDiv.innerHTML += `<p style="color: red;">No answer selected for "${question.querySelector('strong').textContent}".</p>`;
+                }
+            });
+
+            const totalQuestions = questions.length;
+            const percentage = ((correctCount / totalQuestions) * 100).toFixed(2);
+            resultDiv.innerHTML += `<p style="color: green;">You got ${correctCount} out of ${totalQuestions} questions correct. Percentage: ${percentage}%</p>`;
+        }
+
+        // Event listener for submit button
+        document.getElementById('submitAnswers').addEventListener('click', handleSubmit);
+
+        // Call the fetch function on page load
+        window.onload = fetchQuestions;
+    </script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal - PrepMaster</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<style>
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
+}
+
+.admin-header {
+  background-color: orange;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header .logo h1 {
+  margin-left: 20px;
+}
+
+.admin-nav ul {
+  list-style: none;
+  display: flex;
+}
+
+.admin-nav ul li {
+  margin-right: 20px;
+}
+
+.admin-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.admin-nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.admin-main {
+  padding: 40px;
+}
+
+.admin-section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.card h3 {
+  font-size: 20px;
+  color:orange;
+}
+
+.card p {
+  font-size: 18px;
+  color: #555;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color:orange;
+  color: white;
+}
+
+.action-btn {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.action-btn.delete {
+  background-color: #e74c3c;
+}
+
+.report-list .report {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.view-btn {
+  padding: 10px 15px;
+  background-color: orange;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.settings-form form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.settings-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.settings-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.submit-btn {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .admin-nav ul li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .dashboard-cards {
+    flex-direction: column;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  table, table th, table td {
+    font-size: 14px;
+  }
+
+  .admin-section {
+    margin-bottom: 20px;
+  }
+}
+
+</style>
+<body>
+    <header class="admin-header">
+        <div class="logo">
+          <h1>PrepMaster Admin</h1>
+        </div>
+        <nav class="admin-nav">
+          <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+          <!--  <li><a href="#manage-users">Manage Users</a></li>-->
+            <li><a href="addadmin.html">Add ADMIN </a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="referralform.html ">referral code </a></li>
+        
+            <li><a href="logout">Logout</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <main class="admin-main">
+        <section id="dashboard" class="admin-section">
+          <h2>Admin Dashboard</h2>
+          <div class="dashboard-cards">
+            <div class="card">
+              <h3>Total Users</h3>
+              <p>4</p>
+            </div>
+            <div class="card">
+              <h3>Pending Tasks</h3>
+              <p>12</p>
+            </div>
+            <div class="card">
+              <h3>Reports</h3>
+              <p>5 New</p>
+            </div>
+          </div>
+        </section>
+    
+        <section id="manage-users" class="admin-section">
+          <h2>Manage Users</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Yakubu Regina </td>
+                <td>reginayakubu079@gmail.com</td>
+                <td>Active</td>
+                <td><button class="action-btn">Edit</button> <button class="action-btn delete">Delete</button></td>
+              </tr>
+              <!-- Additional user rows -->
+            </tbody>
+
+
+            <tbody>
+                <tr>
+                  <td>2</td>
+                  <td>Ese Obahor </td>
+                  <td>eseogheneobahor2019@gmail.com</td>
+                  <td>Active</td>
+                  <td><button class="action-btn">Edit</button> <button class="action-btn delete">Delete</button></td>
+                </tr>
+                <!-- Additional user rows -->
+              </tbody>
+
+
+              <tbody>
+                <tr>
+                  <td>3</td>
+                  <td>Temile Victor</td>
+                  <td>vitetemile@gmail.com</td>
+                  <td>Active</td>
+                  <td><button class="action-btn">Edit</button> <button class="action-btn delete">Delete</button></td>
+                </tr>
+                <!-- Additional user rows -->
+              </tbody>
+ 
+
+              <tbody>
+                <tr>
+                  <td>4</td>
+                  <td> Akabogu Chukwunedum Jude</td>
+                  <td>cbrown8483@gmail.com</td>
+                  <td>Active</td>
+                  <td><button class="action-btn">Edit</button> <button class="action-btn delete">Delete</button></td>
+                </tr>
+                <!-- Additional user rows -->
+              </tbody>
+
+              <tbody>
+                <tr>
+                  <td>5</td>
+                  <td>Saheed Abimbola </td>
+                  <td>saheedabimbola714@gmail.com</td>
+                  <td>Active</td>
+                  <td><button class="action-btn">Edit</button> <button class="action-btn delete">Delete</button></td>
+                </tr>
+                <!-- Additional user rows -->
+              </tbody>
+
+
+          </table>
+        </section>
+    
+        <section id="reports" class="admin-section">
+          <h2>Reports</h2>
+          <div class="report-list">
+            <div class="report">
+              <h3>Monthly Performance</h3>
+              <p>Date: August 2024</p>
+              <button class="view-btn">View Report</button>
+            </div>
+            <!-- More reports -->
+          </div>
+        </section>
+
+
+        
+    
+        <section id="settings" class="admin-section">
+          <h2>Admin Settings</h2>
+          <div class="settings-form">
+            <form>
+              <label for="admin-email">Email</label>
+              <input type="email" id="admin-email" placeholder="Admin Email" value="info@prepmaster.com" required>
+              
+              <label for="admin-password">Change Password</label>
+              <input type="password" id="admin-password" placeholder="New Password" required>
+              
+              <button type="submit" class="submit-btn">Save Settings</button>
+            </form>
+          </div>
+        </section>
+      </main>
+    
+  
+</body>
+</html>

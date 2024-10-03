@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact PrepMaster</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+<style>
+    /* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color:orange;
+    color: white;
+}
+
+.logo {
+    
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f39c12;
+}
+
+/* Responsive Design */
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+
+/* Contact Section */
+.contact-section {
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Info Styling */
+.contact-info {
+  flex: 1;
+}
+
+.contact-info h1 {
+  font-size: 36px;
+  color:orange;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.info-item h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.info-item p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Contact Form Styling */
+.contact-form {
+  flex: 1;
+}
+
+.contact-form h2 {
+  font-size: 28px;
+  color: orange;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: #fff;
+}
+
+.submit-btn {
+  padding: 12px 20px;
+  background-color: orange;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Footer section */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    flex-basis: 25%;
+    padding: 20px;
+    min-width: 220px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #f39c12;
+}
+
+.footer-col p {
+    margin: 10px 0;
+}
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #444;
+    padding: 10px;
+    top: 100%;
+    left: 0;
+    min-width: 150px;
+    z-index: 1;
+}
+
+.dropdown-menu li {
+    margin-bottom: 5px;
+}
+
+.dropdown-menu li a {
+    color: white;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown on hover */
+}
+
+.dropdown-item {
+    position: relative;
+}
+
+.dropdown-item a::after {
+    content: " ▼"; /* Add a down arrow after items with dropdowns */
+}
+
+.dropdown-item:hover .dropdown-menu {
+    display: block; /* Show dropdown when the parent is hovered */
+}
+ /* FAQ Section Styling */
+ .faq-container {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    margin: 40px 0;
+}
+
+.faq-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h4 {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.faq-item p {
+    font-size: 16px;1`  `
+    color: #666;
+    margin: 0;
+    padding-left: 10px;
+    display: none; /* Hidden by default */
+}
+
+.faq-item.active p {
+    display: block; /* Show when active */
+}
+  
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-links img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    margin-top: 30px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #ccc;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .program-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .program-item {
+        width: 90%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+    }
+
+    .navbar .nav-links li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 100vh;
+        top: 0px;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .navbar.active .nav-links {
+        transform: translateX(0%);
+    }
+
+    .burger.toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.toggle .line2 {
+        opacity: 0;
+    }
+
+    .burger.toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-info, .contact-form {
+    max-width: 100%;
+  }
+}
+
+</style>
+<body>
+     <!-- Navigation Bar -->
+     <header>
+        <div class="https://assets.awwwards.com/awards/images/2019/07/up.jpg">MyWebsite</div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li ><a href="whyprepmaster.html">Why PrepMaster</a></li>
+                <li style="background-color: red;"><a href="signup.html">Sign Up</a></li>
+                <li style="background-color: red;"><a href="signin.html">Sign In</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+  <section class="contact-section">
+    <div class="contact-container">
+
+      <!-- Contact Information Section -->
+      <div class="contact-info">
+        <h1>Contact Us</h1>
+        <p>
+          Have questions or need support? Reach out to us using the contact form or the details below.
+        </p>
+        <div class="info-item">
+          <h3>Email:</h3>
+          <p>support@prepmaster.com</p>
+        </div>
+        <div class="info-item">
+          <h3>Phone:</h3>
+          <p>+234 8146804482</p>
+        </div>
+        <div class="info-item">
+          <h3>Address:</h3>
+          <p>Admiralty way, Lagos State, Nigeria</p>
+        </div>
+         <!-- Social Media Links -->
+         <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=100076689693947&mibextid=LQQJ4d "><img src="data:image/jpeg;base64,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" alt="Facebook"></a>
+            <a href="https://t.me/viteweb01"><img src="https://cdn-icons-png.flaticon.com/512/124/124019.png" alt="Twitter"></a>
+            <a href="https://wa.me/2348146804482
+            "><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5eCuBytANUnHiTwsfWilAY_xDnAQpB9lpdpJa9lGvcB2IY7BoowRaWOa42TfscUuXTD8&usqp=CAU" alt="LinkedIn"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram"></a>
+        </div>
+      </div>
+
+      <!-- Contact Form Section -->
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+
+     <!--  <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+  
+            <input type="hidden" name="access_key" value="1a01da4c-32bf-4647-a031-6671e3c04665" />--> 
+
+
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="1a01da4c-32bf-4647-a031-6671e3c04665" />
+
+          <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Enter your message here" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-row">
+                <!-- About Section -->
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <p>Prep Master is an innovative academic platform designed to enhance learning by assessing student attitudes and promoting academic excellence through growth-focused insights.</p>
+                </div>
+     
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li class="dropdown-item">
+                            <a href="#">Courses</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="signin.html">Math</a></li>
+                                <li><a href="signin.html">English Language </a></li>
+                                <li><a href="signin.html">General Science </a></li>
+                                <li><a href="signin.html">Enterpreneur </a></li>
+                                <li><a href="signin.html">citizenship Education</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+     
+                <!-- Resources -->
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li class="dropdown-item">
+                            <a href="#">FAQ</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="signin.html">What is Prep Master</a></li>
+                                <li><a href="signin.html">How does the aptitude test work</a></li>
+                                <li><a href="signin.html">Can i retake the aptitude test </a></li>
+                                <li><a href="signin.html">Who can take the test </a></li>
+                                <li><a href="signin.html">How can i create an accout with Prep Master </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://t.me/+T-5NqvF844A4NTQ0 ">Community</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+     
+                <!-- Contact Information -->
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@prepmaster.com</p>
+                    <p>Phone: +234 8146804482</p>
+                    <p>Address: Admiralty way, Lagos State, Nigeria</p>
+     
+                    <!-- Social Media Links -->
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100076689693947&mibextid=LQQJ4d "><img src="data:image/jpeg;base64,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" alt="Facebook"></a>
+                        <a href="https://t.me/viteweb01"><img src="https://cdn-icons-png.flaticon.com/512/124/124019.png" alt="Twitter"></a>
+                        <a href="https://wa.me/2348146804482
+                        "><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5eCuBytANUnHiTwsfWilAY_xDnAQpB9lpdpJa9lGvcB2IY7BoowRaWOa42TfscUuXTD8&usqp=CAU" alt="LinkedIn"></a>
+                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+     
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 Prep Master. All Rights Reserved.</p>
+            </div>
+        </div>
+     </footer>
+
+
+</body>
+</html>

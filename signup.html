@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color:none ;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-image: url('https://t3.ftcdn.net/jpg/09/29/38/26/240_F_929382600_3c8iDpZ6qaLwtIjJxugncUCKlfVXWdm2.jpg');
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-size: cover; /* Ensures the image covers the entire background area */
+    background-position: center; /* Centers the background image */
+
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the sign-in form */
+.signin-container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #e8dede;
+    padding: 70px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Styling for the form header */
+.signin-form h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Styling for each form group (label and input) */
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="name"],
+.form-group input[type="phone number"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="school"],
+.form-group input[type="button"]{
+  width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Checkbox styling */
+.form-group input[type="checkbox"] {
+    margin-right: 20px;
+
+}
+
+
+
+/* Styling for the dropdown menu */
+select {
+    width: 100%;
+    padding: 15px;
+   border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Focus state styling for the dropdown */
+select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+/* Styling for the submit button */
+.btn {
+    width: 100%;
+    padding: 15px;
+   
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Hover effect for the submit button */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Additional links styling */
+.extra-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.extra-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+/* Responsive Design for smaller screens */
+@media (max-width: 400px) {
+    .signin-container {
+        padding: 15px;
+    }
+}
+
+
+</style>
+<body>
+     
+    <div class="signin-container">
+        <form class="signin-form">
+            <h2>Sign Up</h2>
+            <div class="form-group">
+                <label for="email">Name</label>
+                <input type="name" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter a password" required>
+            </div>
+
+           <div class="form-group">
+                <label for="phone number">Phone Number</label>
+                <input type="phone number" id="phone number" name="phone number" placeholder="Enter your phone number" required>
+           </div>
+           <button type="submit" class="btn">Sign In</button>
+            <div class="form-group">
+                <label for="schools">School</label>
+                <select id="schools" name="schools" required>
+                    <option value="" disabled selected>Select Your School</option>
+
+
+
+
+                    <!-- JAMB -->
+<optgroup label="JAMB">
+    <option value="lagos-state-school-of-nursing">POST UTME</option>
+   </optgroup>
+
+
+
+
+                    <!-- WAEC -->
+<optgroup label="WAEC">
+    <option value="lagos-state-school-of-nursing">WEST AFRICA EXAMINATION COUNCILS</option>
+   </optgroup>
+
+
+
+
+                     <!-- WAEC -->
+<optgroup label="Nursing">
+    <option value="lagos-state-school-of-nursing">Nursing School Examination </option>
+   </optgroup>
+
+
+
+
+                    <!-- Universities -->
+                    <optgroup label="Universities">
+                        <option value="ahmadu-bello-university">Ahmadu Bello University</option>
+                        <option value="abubakar-tafawa-balewa-university">Abubakar Tafawa Balewa University</option>
+                        <option value="babcock-university">Babcock University</option>
+                        <option value="covenant-university">Covenant University</option>
+                        <option value="delta-state-university">Delta State University</option>
+                        <option value="ekiti-state-university">Ekiti State University</option>
+                        <option value="enugu-state-university">Enugu State University</option>
+                        <option value="federal-university-dutsin-ma">Federal University Dutsin-Ma</option>
+                        <option value="federal-university-of-technology-akure">Federal University of Technology, Akure</option>
+                        <option value="federal-university-of-technology-minna">Federal University of Technology, Minna</option>
+                        <option value="federal-university-of-technology-owerri">Federal University of Technology, Owerri</option>
+                        <option value="university-of-ibadan">University of Ibadan</option>
+                        <option value="university-of-lagos">University of Lagos</option>
+                        <option value="university-of-nigeria">University of Nigeria</option>
+                        <option value="university-of-ilorin">University of Ilorin</option>
+                        <option value="obafemi-awolowo-university">Obafemi Awolowo University</option>
+                        <option value="university-of-calabar">University of Calabar</option>
+                        <option value="university-of-portharcourt">University of Port Harcourt</option>
+                        <option value="university-of-amaigbo">University of Amaigbo</option>
+                        <option value="university-of-medical-sciences">University of Medical Sciences</option>
+                    </optgroup>
+                    <!-- Polytechnics -->
+                    <optgroup label="Polytechnics">
+                        <option value="auchi-polytechnic">Auchi Polytechnic</option>
+                        <option value="federal-polytechnic-nekede">Federal Polytechnic Nekede</option>
+                        <option value="federal-polytechnic-offa">Federal Polytechnic Offa</option>
+                        <option value="the-polytechnic-ibadan">The Polytechnic Ibadan</option>
+                        <option value="yaba-college-of-technology">Yaba College of Technology</option>
+                        <option value="moshood-abiola-polytechnic">Moshood Abiola Polytechnic</option>
+                        <option value="federal-polytechnic-idah">Federal Polytechnic Idah</option>
+                        <option value="federal-polytechnic-mubi">Federal Polytechnic Mubi</option>
+                        <option value="federal-polytechnic-oko">Federal Polytechnic Oko</option>
+                        <option value="federal-polytechnic-akure">Federal Polytechnic Akure</option>
+                        <option value="enugu-state-polytechnic">Enugu State Polytechnic</option>
+                        <option value="kwara-state-polytechnic">Kwara State Polytechnic</option>
+                        <option value="lagos-state-polytechnic">Lagos State Polytechnic</option>
+                        <option value="niger-state-polytechnic">Niger State Polytechnic</option>
+                        <option value="rivers-state-polytechnic">Rivers State Polytechnic</option>
+                    </optgroup>
+                 </div>
+
+
+                 <!-- Nursing Schools -->
+<optgroup label="Nursing Schools">
+    <option value="lagos-state-school-of-nursing">Lagos State School of Nursing</option>
+    <option value="university-college-hospital-school-of-nursing-ibadan">University College Hospital School of Nursing, Ibadan</option>
+    <option value="school-of-nursing-abuth-zaria">School of Nursing ABUTH Zaria</option>
+    <option value="school-of-nursing-luth-lagos">School of Nursing LUTH, Lagos</option>
+    <option value="school-of-nursing-uch-ibadan">School of Nursing UCH, Ibadan</option>
+    <option value="school-of-nursing-obafemi-awolowo-university-teaching-hospital">School of Nursing Obafemi Awolowo University Teaching Hospital</option>
+    <option value="school-of-nursing-bowen-university-teaching-hospital-oau-ile-ife">School of Nursing Bowen University Teaching Hospital, OAU, Ile Ife</option>
+    <option value="school-of-nursing-university-of-nigeria-teaching-hospital-enugu">School of Nursing University of Nigeria Teaching Hospital, Enugu</option>
+    <option value="school-of-nursing-jos-university-teaching-hospital">School of Nursing Jos University Teaching Hospital</option>
+    <option value="school-of-nursing-babcock-university-teaching-hospital">School of Nursing Babcock University Teaching Hospital</option>
+    <option value="school-of-nursing-university-of-calabar-teaching-hospital">School of Nursing University of Calabar Teaching Hospital</option>
+    <option value="school-of-nursing-university-of-ilorin-teaching-hospital">School of Nursing University of Ilorin Teaching Hospital</option>
+    <option value="school-of-nursing-federal-teaching-hospital-gombe">School of Nursing Federal Teaching Hospital, Gombe</option>
+    <option value="school-of-nursing-university-of-benin-teaching-hospital">School of Nursing University of Benin Teaching Hospital</option>
+    <option value="school-of-nursing-nnamdi-azikiwe-university-teaching-hospital">School of Nursing Nnamdi Azikiwe University Teaching Hospital</option>
+</optgroup>
+
+
+
+                   
+           <!-- <div class="form-group">
+                <label for="Falculty">Falculty</label>
+                <input type="Falculty" id="Falcuty" name="Falculty" placeholder="Choose your Falculty" required>
+            </div>-->
+
+         <!--   <div class="form-group">
+                <label for="Department">Department</label>
+                <input type="Department" id="Department" name="Department" placeholder="Choose your Department" required>
+            </div>
+            
+
+            <div class="form-group">
+                <input type="checkbox" id="remember-me" name="remember-me">
+                <label for="remember-me">Remember Me</label>
+            </div>
+
+            <div class="extra-links">
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                <p>Don’t have an account? <a href="#" class="create-account">Create an Account</a></p>
+            </div>-->
+        
+
+
+        </form>
+    </div>
+</body>
+</html>
